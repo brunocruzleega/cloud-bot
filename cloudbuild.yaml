@@ -3,18 +3,19 @@ steps:
 #- name: 'gcr.io/cloud-builders/docker'
 #  args: [ 'build', '-t', 'gcr.io/$PROJECT_ID/malha_bash_ok', '.' ]
 - name: gcr.io/cloud-builders/gsutil
-  args: ['cp', 'malha_bash_ok.py', 'gs://us-east1-cicd-bot-composer-e2798824-bucket/dags/']
+  args: ['cp', 'malha_bash_ok.py', 'gs://southamerica-east1-composer-5b11fda0-bucket/dags/']
 #  dir: '/'
   id: 'deploy-malha'
+  
 
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: 'bash'
-  args: ['wait_for_dag_deployed.sh', 'cicd-bot-composer', 'us-east1', 'malha_bash_ok', '30', '30']
+  args: ['wait_for_dag_deployed.sh', 'composer-pipe-cicd', 'southamerica-east1', 'malha_bash_ok', '30', '30']
  # dir: '$REPO_NAME/build-pipeline'
   id: 'wait-for-dag-deployed-on-composer'
 
 - name: gcr.io/cloud-builders/gcloud
-  args: ['composer', 'environments', 'run', 'cicd-bot-composer', '--location', 'us-east1', 'trigger_dag', '--', 'malha_bash_ok']
+  args: ['composer', 'environments', 'run', 'composer-pipe-cicd', '--location', 'southamerica-east1', 'trigger_dag', '--', 'malha_bash_ok']
   id: 'trigger-pipeline-execution'
 
 #artifacts:
