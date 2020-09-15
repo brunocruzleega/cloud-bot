@@ -10,7 +10,7 @@ steps:
 
 - name: gcr.io/cloud-builders/gcloud
   entrypoint: 'bash'
-  args: ['wait_for_dag_deployed.sh', 'composer-pipe-cicd', 'southamerica-east1', 'malha_bash_ok', '6', '20']
+  args: ['wait_for_dag_deployed.sh', 'composer-pipe-cicd', 'southamerica-east1', 'malha_bash_ok', '1', '20']
  # dir: '$REPO_NAME/build-pipeline'
   id: 'wait-for-dag-deployed-on-composer'
 
