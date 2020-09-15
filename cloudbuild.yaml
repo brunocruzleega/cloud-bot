@@ -6,7 +6,6 @@ steps:
   args: ['cp', 'malha_bash_ok.py', 'gs://southamerica-east1-composer-5b11fda0-bucket/dags/']
 #  dir: '/'
   id: 'deploy-malha'
-  
 
 #- name: gcr.io/cloud-builders/gcloud
 #  entrypoint: 'bash'
